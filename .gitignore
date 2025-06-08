@@ -1,0 +1,6 @@
+backups/
+.env*
+!.env.example
+*.log
+*.out
+*.zip
