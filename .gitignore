@@ -1,6 +1,19 @@
-backups/
+# backups/
 .env*
 !.env.example
 *.log
 *.out
 *.zip
+local-only
+no-commit
+*no*commit*
+*.pem
+*.cer
+*private
+*priv
+*.cert
+*.key
+keys
+!backup/keys
+id_rsa*
+*.pk7*

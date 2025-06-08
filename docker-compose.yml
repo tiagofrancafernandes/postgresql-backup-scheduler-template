@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16
@@ -11,7 +9,7 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - dp_postgres_data:/var/lib/postgresql/data
 
   postgres_backup:
     build:
@@ -19,12 +17,14 @@ services:
     container_name: postgres_backup
     restart: unless-stopped
     env_file:
-      - ../.env
+    #   - ../.env
+      - ./.env
     volumes:
-      - ./backups:/backups
+      - ./:/app:rw
+      - ./backups:/backups:rw
     depends_on:
       - postgres
 
 volumes:
-  postgres_data:
+  dp_postgres_data:
     external: true
